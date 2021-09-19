@@ -40,14 +40,14 @@ export class TokenDefinition {
     )
     staticDefinitions.push(tokenETH)
 
-    // Add USDT
-    let tokenUSDT = new TokenDefinition(
+    // Add OLD USDT
+    let tokenUSDTOLD = new TokenDefinition(
       Address.fromString('0xe78984541a634c52c760fbf97ca3f8e7d8f04c85'),
-      'USDT',
-      'USDT',
+      'USDT-OLD',
+      'USDT-OLD',
       BigInt.fromI32(18)
     )
-    staticDefinitions.push(tokenUSDT)
+    staticDefinitions.push(tokenUSDTOLD)
 
     // Add HPD
     let tokenHPD = new TokenDefinition(
@@ -66,6 +66,16 @@ export class TokenDefinition {
       BigInt.fromI32(18)
     )
     staticDefinitions.push(tokenESR)
+
+    // Add USDT
+    let tokenUSDT = new TokenDefinition(
+      Address.fromString('0xd378634119d2f7b3cf3d60e0b0f5e048e74ce3cf'),
+      'USDT',
+      'USDT',
+      BigInt.fromI32(18)
+    )
+    staticDefinitions.push(tokenUSDT)
+    
 
     return staticDefinitions
   }

@@ -6,7 +6,7 @@ import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from 
 const WETH_ADDRESS = '0xbe05ac1fb417c9ea435b37a9cecd39bc70359d31'
 const USDC_WETH_PAIR = '' // created 10008355
 const DAI_WETH_PAIR = '' // created block 10042267
-const USDT_WETH_PAIR = '0x0c85fe2dbc540386d2c1d907764956e18ea2ff6b' // created block 10093341
+const USDT_WETH_PAIR = '0x118e1317dc0469c9aedf7ade5d1aa1a47fc2f5b4' // created block 10093341
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
@@ -46,8 +46,9 @@ let WHITELIST: string[] = [
   '0xbe05ac1fb417c9ea435b37a9cecd39bc70359d31', // WHPB
   '0xa7be5e053cb523585a63f8f78b7dbca68647442f', // ESR
   '0x0f63352df611350201c419de9399a67e50d4b820', // ETH
-  '0xe78984541a634c52c760fbf97ca3f8e7d8f04c85', // USDT
+  '0xe78984541a634c52c760fbf97ca3f8e7d8f04c85', // OLD USDT
   '0x6383f770f1eec68e80ac0c5527be71a11b4d182c', // HPD
+  '0xd378634119d2f7b3cf3d60e0b0f5e048e74ce3cf', // New USDT
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
