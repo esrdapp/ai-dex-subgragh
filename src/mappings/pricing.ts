@@ -7,35 +7,45 @@ const WETH_ADDRESS = '0xbe05ac1fb417c9ea435b37a9cecd39bc70359d31'
 const USDC_WETH_PAIR = '' // created 10008355
 const DAI_WETH_PAIR = '' // created block 10042267
 const USDT_WETH_PAIR = '0x118e1317dc0469c9aedf7ade5d1aa1a47fc2f5b4' // created block 10093341
+const OLD_USDT_WETH_PAIR = '0x0c85fe2dbc540386d2c1d907764956e18ea2ff6b' // created block 10093341
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
-  let daiPair = Pair.load(DAI_WETH_PAIR) // dai is token0
-  let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
+  // let daiPair = Pair.load(DAI_WETH_PAIR) // dai is token0
+  // let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
   let usdtPair = Pair.load(USDT_WETH_PAIR) // usdt is token1
+  let oldUsdtPair = Pair.load(OLD_USDT_WETH_PAIR) // usdt is token1
 
-  // all 3 have been created
-  // if (daiPair !== null && usdcPair !== null && usdtPair !== null) {
-  //   let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve1).plus(usdtPair.reserve0)
-  //   let daiWeight = daiPair.reserve1.div(totalLiquidityETH)
-  //   let usdcWeight = usdcPair.reserve1.div(totalLiquidityETH)
-  //   let usdtWeight = usdtPair.reserve0.div(totalLiquidityETH)
-  //   return daiPair.token0Price
-  //     .times(daiWeight)
-  //     .plus(usdcPair.token0Price.times(usdcWeight))
-  //     .plus(usdtPair.token1Price.times(usdtWeight))
-  //   // dai and USDC have been created
-  // } else if (daiPair !== null && usdcPair !== null) {
-  //   let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve1)
-  //   let daiWeight = daiPair.reserve1.div(totalLiquidityETH)
-  //   let usdcWeight = usdcPair.reserve1.div(totalLiquidityETH)
-  //   return daiPair.token0Price.times(daiWeight).plus(usdcPair.token0Price.times(usdcWeight))
-  //   // USDC is the only pair so far
-  // } else if (usdcPair !== null) {
-  //   return usdcPair.token0Price
-  // } else if (usdtPair !== null) {
-  if (usdtPair !== null) {
-    return usdtPair.token1Price
+    // // all 3 have been created
+    // if (daiPair !== null && usdcPair !== null && usdtPair !== null) {
+    //   let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve1).plus(usdtPair.reserve0)
+    //   let daiWeight = daiPair.reserve1.div(totalLiquidityETH)
+    //   let usdcWeight = usdcPair.reserve1.div(totalLiquidityETH)
+    //   let usdtWeight = usdtPair.reserve0.div(totalLiquidityETH)
+    //   return daiPair.token0Price
+    //     .times(daiWeight)
+    //     .plus(usdcPair.token0Price.times(usdcWeight))
+    //     .plus(usdtPair.token1Price.times(usdtWeight))
+    //   // dai and USDC have been created
+    // } else if (daiPair !== null && usdcPair !== null) {
+    //   let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve1)
+    //   let daiWeight = daiPair.reserve1.div(totalLiquidityETH)
+    //   let usdcWeight = usdcPair.reserve1.div(totalLiquidityETH)
+    //   return daiPair.token0Price.times(daiWeight).plus(usdcPair.token0Price.times(usdcWeight))
+    //   // USDC is the only pair so far
+    // } else if (usdcPair !== null) {
+    //   return usdcPair.token0Price
+    // } else {
+    //   return ZERO_BD
+    // }
+
+  if (oldUsdtPair !== null && usdtPair !== null) {
+    let totalLiquidityETH = oldUsdtPair.reserve0.plus(usdtPair.reserve0)
+    let oldUsdtWeight = oldUsdtPair.reserve0.div(totalLiquidityETH)
+    let usdtWeight = usdtPair.reserve0.div(totalLiquidityETH)
+    return oldUsdtPair.token1Price.times(oldUsdtWeight).plus(usdtPair.token1Price.times(usdtWeight))
+  }else if (oldUsdtPair !== null) {
+    return oldUsdtPair.token1Price
   } else {
     return ZERO_BD
   }
