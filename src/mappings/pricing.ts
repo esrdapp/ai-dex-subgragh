@@ -62,7 +62,7 @@ let WHITELIST: string[] = [
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
-let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('400000')
+let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('1000')
 
 // minimum liquidity for price to get tracked
 let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('2')
@@ -116,7 +116,7 @@ export function getTrackedVolumeUSD(
   }
 
   // if less than 5 LPs, require high minimum reserve amount amount or return 0
-  if (pair.liquidityProviderCount.lt(BigInt.fromI32(5))) {
+  if (pair.liquidityProviderCount.lt(BigInt.fromI32(2))) {
     let reserve0USD = pair.reserve0.times(price0)
     let reserve1USD = pair.reserve1.times(price1)
     if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
