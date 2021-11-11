@@ -59,6 +59,10 @@ let WHITELIST: string[] = [
   '0xe78984541a634c52c760fbf97ca3f8e7d8f04c85', // OLD USDT
   '0x6383f770f1eec68e80ac0c5527be71a11b4d182c', // HPD
   '0xd378634119d2f7b3cf3d60e0b0f5e048e74ce3cf', // New USDT
+  '0x597e994b9f5a3e397c8c5cfdb3893bacddb8167d', //STEAM
+	'0xf83811872d457532230a5f1f3cf0ca8f3aa0db55', //420
+	'0x4ca7665a86fecd3c1df233d8ab72e82261ed838a', //HBB
+  '0xdfe4051195a09a67defc36ce6bbb5e6edea745cb', //KING
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
