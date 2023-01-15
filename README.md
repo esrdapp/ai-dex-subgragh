@@ -1,4 +1,4 @@
-# Uniswap V2 Subgraph
+# AI-DEX Subgraph
 
 [Uniswap](https://uniswap.org/) is a decentralized protocol for automated token exchange on Ethereum.
 
